@@ -1,0 +1,1 @@
+../../code/repos/d-mode/d-mode.el
