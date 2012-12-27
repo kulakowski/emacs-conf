@@ -12,7 +12,10 @@
 
 ;; Adga mode.
 (with-load (let ((coding-system-for-read 'utf-8))
-	     (shell-command-to-string "agda-mode locate")))
+	     (shell-command-to-string "agda-mode locate"))
+  (add-hook 'agda2-mode-hook
+	    (lambda () (agda2-highlight-set-faces
+			'agda2-highlight-face-groups 'conor))))
 
 
 ;; Auctex mode.
