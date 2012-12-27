@@ -40,6 +40,8 @@
 
 ;; Haskell mode.
 (with-load "haskell-site-file"
+  (setq haskell-program-name
+	"~/code/repos/ghc/inplace/bin/ghc-stage2 --interactive -XTypeHoles")
   (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
   (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation))
 
