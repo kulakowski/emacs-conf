@@ -12,10 +12,10 @@
 
 ;; Adga mode.
 (with-load (let ((coding-system-for-read 'utf-8))
-	     (shell-command-to-string "agda-mode locate"))
+             (shell-command-to-string "agda-mode locate"))
   (add-hook 'agda2-mode-hook
-	    (lambda () (agda2-highlight-set-faces
-			'agda2-highlight-face-groups 'conor))))
+            (lambda () (agda2-highlight-set-faces
+                        'agda2-highlight-face-groups 'conor))))
 
 
 ;; Auctex mode.
@@ -28,11 +28,6 @@
   (setq TeX-view-program-selection '((output-pdf "Preview"))))
 
 
-;; C++ mode.
-(add-hook 'c++-mode-hook
-	  (lambda () (setq indent-tabs-mode nil)))
-
-
 ;; D mode.
 (with-load "d-mode"
   (add-to-list 'auto-mode-alist '("\\.d[i]?\\'" . d-mode)))
@@ -41,7 +36,7 @@
 ;; Haskell mode.
 (with-load "haskell-site-file"
   (setq haskell-program-name
-	"~/code/repos/ghc/inplace/bin/ghc-stage2 --interactive -XTypeHoles")
+        "~/code/repos/ghc/inplace/bin/ghc-stage2 --interactive -XTypeHoles")
   (add-hook 'haskell-mode-hook 'turn-on-haskell-doc-mode)
   (add-hook 'haskell-mode-hook 'turn-on-haskell-indentation))
 
@@ -53,38 +48,38 @@
   (setq rcirc-default-full-name rcirc-default-user-name)
   (setq rcirc-authinfo '(("freenode" nickserv "kulakowski" "openopen")))
   (setq rcirc-server-alist '(("irc.freenode.net"
-			      :channels
-			      ("#haskell" "#coq" "#agda"))))
+                              :channels
+                              ("#haskell" "#coq" "#agda"))))
   (add-hook 'rcirc-mode-hook 'rcirc-omit-mode)
   (defun-rcirc-command reopen ()
     "Restart the IRC connection."
     (interactive "i")
     (let* ((process
-	    (or process (with-current-buffer "*irc.freenode.net*"
-			  (rcirc-buffer-process))))
-	   (server (car (process-contact process)))
-	   (port (process-contact process :service))
-	   (nick (rcirc-nick process))
-	   channels)
+            (or process (with-current-buffer "*irc.freenode.net*"
+                          (rcirc-buffer-process))))
+           (server (car (process-contact process)))
+           (port (process-contact process :service))
+           (nick (rcirc-nick process))
+           channels)
       (dolist (buf (buffer-list))
-	(with-current-buffer buf
-	  (when (eq process (rcirc-buffer-process))
-	    (if (rcirc-channel-p rcirc-target)
-		(setq channels (cons rcirc-target channels))))))
+        (with-current-buffer buf
+          (when (eq process (rcirc-buffer-process))
+            (if (rcirc-channel-p rcirc-target)
+                (setq channels (cons rcirc-target channels))))))
       (delete-process process)
       (rcirc-connect server port nick
-		     rcirc-default-user-name rcirc-default-full-name
-		     channels)))
+                     rcirc-default-user-name rcirc-default-full-name
+                     channels)))
   (defun-rcirc-command close (reason)
     "Close and clean up the IRC connection."
     (interactive "i")
     (let ((process
-	   (or process (get-process "irc.freenode.net"))))
+           (or process (get-process "irc.freenode.net"))))
       (rcirc-cmd-quit reason process)
       (rcirc-track-minor-mode 0)))
   (defun rcirc-open ()
     (if (get-buffer "*irc.freenode.net*")
-	(rcirc-cmd-reopen)
+        (rcirc-cmd-reopen)
       (rcirc nil))
     (setq rcirc-activity nil)
     (rcirc-update-activity-string)
@@ -92,7 +87,7 @@
   (defun rcirc-toggle (&optional arg)
     (interactive "P")
     (if arg
-	(rcirc-cmd-close "")
+        (rcirc-cmd-close "")
       (rcirc-open))))
 
 
