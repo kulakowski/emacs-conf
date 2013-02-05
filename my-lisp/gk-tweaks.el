@@ -15,4 +15,6 @@
 
 (setq-default indent-tabs-mode nil)
 
+(xterm-mouse-mode)
+
 (provide 'gk-tweaks)
