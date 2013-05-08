@@ -33,6 +33,10 @@
   (add-to-list 'auto-mode-alist '("\\.d[i]?\\'" . d-mode)))
 
 
+;; Ediff mode.
+(with-require 'ediff
+  (setq ediff-split-window-function 'split-window-horizontally))
+
 ;; Haskell mode.
 (with-load "haskell-site-file"
   (setq haskell-program-name
