@@ -136,6 +136,18 @@
   (setq whitespace-style '(face empty trailing tabs)))
 
 
+;; Xterm mouse mode.
+(with-require 'frame
+  (defun gk-set-xterm-mouse-mode (&optional frame)
+    "Turn xterm-mouse-mode on in the given (or default) frame.
+Only used when window-system is nil."
+    (unless window-system
+      (when (or frame xterm-mouse-mode)
+        (xterm-mouse-mode 1))))
+  (gk-set-xterm-mouse-mode)
+  (add-hook 'after-make-frame-functions 'gk-set-xterm-mouse-mode))
+
+
 ;; Mode line.
 (with-require 'diminish
   (diminish 'global-whitespace-mode)
