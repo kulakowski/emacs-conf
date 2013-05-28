@@ -1,5 +1,6 @@
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups/"))
       disabled-command-function nil
+      search-whitespace-regexp nil
       require-final-newline t)
 
 (show-paren-mode 1)
