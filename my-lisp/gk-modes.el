@@ -106,6 +106,12 @@
 (with-require 'miranda-mode)
 
 
+;; Rust mode.
+(let* ((rust-dir "~/code/repos/rust/")
+       (rust-mode (concat rust-dir "src/etc/emacs/rust-mode.el")))
+  (with-load rust-mode))
+
+
 ;; Ocaml mode.
 (with-load "tuareg"
   (add-to-list 'auto-mode-alist '("\\.ml[iylp]?" . tuareg-mode))
