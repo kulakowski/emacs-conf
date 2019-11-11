@@ -1,6 +1,6 @@
 (package-initialize)
 
-(let ((dirs '("~/.emacs.d/site-lisp" "~/.emacs.d/my-lisp")))
+(let ((dirs '("~/.emacs.d/my-lisp")))
   (dolist (dir dirs)
     (let ((default-directory dir))
       (normal-top-level-add-to-load-path '("."))
